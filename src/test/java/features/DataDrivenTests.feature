@@ -62,7 +62,7 @@ Feature: Data driven tests
 
 
 
-  @wip @ignore
+
   Scenario Outline: get user information verification(Database vs API) <email>
     * def DBUtils = Java.type('utilities.DBUtils')
     * def query = "select id,firstname,lastname,role from users where email = '<email>'"
@@ -88,6 +88,8 @@ Feature: Data driven tests
     And match response.firstName == dbResult.firstname
     And match response.lastName == dbResult.lastname
     And match response.role == dbResult.role
+    And print '*****************************************************', response.firstName
 
     Examples:
-      |read('data/users.csv')|
+     # |read('data/users.csv')|
+     |read('data/new.xlsx')  |
